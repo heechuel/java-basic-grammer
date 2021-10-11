@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    String[] f = {"apple", "pear", "grape", "banana"};
+	    
+	    for(String k : f)
+	    {
+	        System.out.print(k+" ");
+	    }
+	   
+	}
+}
