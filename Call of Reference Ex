@@ -1,0 +1,24 @@
+public class Main{
+    static void ExchangeWord(char[] str){
+        for(int i =0; i< str.length; i++)
+        {
+            if(str[i] == ' ')
+            str[i] = ',';
+        }
+    }
+    
+    static void ShowArray(char[] str){
+        for(int i = 0; i<str.length; i++)
+        System.out.print(str[i]);
+    }
+    
+    public static void main(String[] args)
+    {
+        char[] x = {'I',' ','h','a','v','e',' ','a',' ','p','e','n'};
+        
+        ShowArray(x);
+        System.out.println(" ");
+        ExchangeWord(x);
+        ShowArray(x);
+    }
+    }
