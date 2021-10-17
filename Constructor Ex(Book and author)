@@ -1,0 +1,23 @@
+public class Main{
+    String title;
+    String author;
+    
+    public Main(String x){ // 생성자
+        title = x;
+        author = "작자미상";
+        System.out.println(title +" , "+ author);
+    }
+    
+    public Main(String x, String y){
+        title = x;
+        author = y;
+        System.out.println(title +" , "+ author);
+    }
+    
+    
+    public static void main(String[] args){
+        Main javabook = new Main("Java", "홍길동");
+        
+        Main bible = new Main("Bible");
+    }
+    }
