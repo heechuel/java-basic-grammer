@@ -1,0 +1,30 @@
+public class Main{
+    String title;
+    String author;
+    void show(){
+        System.out.println(title + " " + author);
+    }
+    
+    public Main(){
+        this("","");
+        System.out.println("생성자 호출됨");
+    }
+    
+    public Main(String title){
+        this(title,"작자 미상");
+    }
+    public Main(String title, String author){
+        this.title = title;
+        this.author = author;
+    }
+    
+    public static void main (String[] args) {
+    Main JavaBook = new Main("Java", "우주대스타");
+    Main bible = new Main("bible");
+    Main EmptyBook = new Main();
+    JavaBook.show();
+    bible.show();
+    EmptyBook.show();
+    
+    }
+}
