@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Main{
+    
+    
+    public static void main (String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        int SeedMoney;
+        double YearInter, Money;
+        int i = 0;
+        
+        System.out.println("====== 복리 예금 계산기 ======");
+        
+        System.out.print("원금을 입력하세요: ");
+        SeedMoney = scan.nextInt();
+        
+        System.out.print("연이율을 입력하세요: ");
+        YearInter = scan.nextDouble();
+        
+        System.out.println("- - - - - - - - - - - - - - -");
+        System.out.println("년도수\t\t" + "원리금");
+        System.out.println("- - - - - - - - - - - - - - -");
+        
+        Money = SeedMoney;
+        
+        while(true){
+            i++;
+            Money = Money * (1 + YearInter / 100);
+            System.out.print(i+"\t\t");
+            System.out.printf("%.2f\n", Money);
+            
+            if(Money > SeedMoney * 2)
+            break;
+        }
+        System.out.println("- - - - - - - - - - - - - - -");
+        System.out.println(i+"년 걸림"); 
+        
+        scan.close();
+    }
+}
+
