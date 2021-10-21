@@ -1,42 +1,104 @@
 import java.util.Scanner;
 
-public class Main{
-    
-    
-    public static void main (String[] args) {
-
+class Bank{
         Scanner scan = new Scanner(System.in);
         int SeedMoney;
         double YearInter, Money;
         int i = 0;
         
-        System.out.println("====== 복리 예금 계산기 ======");
+        public void Get_SMoney(){
+            System.out.print("원금을 입력하세요: ");
+            SeedMoney = scan.nextInt();
+            Money = SeedMoney;
+        }
         
-        System.out.print("원금을 입력하세요: ");
-        SeedMoney = scan.nextInt();
+        public void Get_YI(){
+            System.out.print("연이율을 입력하세요: ");
+            YearInter = scan.nextDouble();
+        }
         
-        System.out.print("연이율을 입력하세요: ");
-        YearInter = scan.nextDouble();
+        public void MoneyInter(){
+            
+            System.out.println("- - - - - - - - - - - - - - -");
+            System.out.println("년도수\t" + "원리금");
+            System.out.println("- - - - - - - - - - - - - - -");
         
-        System.out.println("- - - - - - - - - - - - - - -");
-        System.out.println("년도수\t\t" + "원리금");
-        System.out.println("- - - - - - - - - - - - - - -");
-        
-        Money = SeedMoney;
-        
-        while(true){
+            while(true){
             i++;
             Money = Money * (1 + YearInter / 100);
             System.out.print(i+"\t\t");
             System.out.printf("%.2f\n", Money);
             
-            if(Money > SeedMoney * 2)
+            if(Money >= SeedMoney * 2)
             break;
+            else
+            continue;
+            }
+            
+            System.out.println("- - - - - - - - - - - - - - -");
+            System.out.println(i+"년 걸림");
         }
-        System.out.println("- - - - - - - - - - - - - - -");
-        System.out.println(i+"년 걸림"); 
         
-        scan.close();
     }
+
+public class Main
+{
+    static void ShowMenu(){
+        System.out.println("");
+        System.out.print("1) 복리 예금 계산기 \t");
+        System.out.print("2) 구구단 출력하기 \t");
+        System.out.println("3) 종료");
+    }
+    
+    static int SelectMenu(){
+        Scanner scan = new Scanner(System.in);
+        
+        int x;
+        while(true){
+        System.out.print("메뉴를 선택하세요 : ");
+        x = scan.nextInt();
+        
+        if(x<1 || x>3){
+            System.out.println("");
+            ShowMenu();
+            SelectMenu();
+        }
+        
+        
+        return x;
+        }
+        
+    }
+    
+    
+	public static void main(String[] args) {
+		
+		int num;
+		
+		Bank bank = new Bank();
+        
+        Label: while(true){
+		    ShowMenu();
+		    num = SelectMenu();
+		
+		    switch(num){
+		        case 1 :
+		        System.out.println("====== 복리 예금 계산기 ======");
+		        bank.Get_SMoney();
+		        bank.Get_YI();
+		        bank.MoneyInter();
+		        continue;
+		        
+		        case 3 :
+		            break Label;
+		   
+		}
+        }
+		
+	}
 }
+
+
+
+
 
