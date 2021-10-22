@@ -1,3 +1,7 @@
+// 21.10.22 Q1. scanner.close() 문을 어느 위치에 삽입해야 할 지 모르겠음
+
+
+
 import java.util.Scanner;
 
 class Bank{
@@ -56,11 +60,22 @@ class TimesTable{
         for(i = 1; i<10; i++){
             for(j = 2; j<(2+line); j++){
                 System.out.print(j + " * " + i +" = " + j*i);
-                System.out.print(" ");
+                System.out.print("\t");
             }
             System.out.println("");
         }
         
+        System.out.println("");
+        
+        for(i = 1; i<10; i++){
+            for(j = (2+line); j<10; j++){
+                System.out.print(j + " * " + i +" = " + j*i);
+                System.out.print("\t");
+            }
+            System.out.println("");
+        }
+        
+        System.out.println("");
     }
     
 }
@@ -116,6 +131,7 @@ public class Main
 		        
 		        case 2 :
 		            System.out.println("====== 구구단 출력하기 ======");
+		            System.out.print("출력 단수 : ");
 		            int Dan = scan.nextInt();
 		            TimesTable T_T = new TimesTable(Dan);
 		            T_T.ShowT_T();
