@@ -1,0 +1,26 @@
+import java.util.Random;
+
+
+public class Main{
+    public static void main(String [] args){
+        Random ran = new Random();
+        
+        
+        int arry[];
+        arry = new int[25];
+        int i, j;
+        
+        for(i = 0; i<arry.length; i++){
+            arry[i] = ran.nextInt(25)+1;
+            for(j = 0; j<i; j++){
+                if(arry [i] == arry[j]){
+                    i--;
+                }
+            }
+        }
+        
+        for(i = 0; i<5;i++)
+        System.out.printf("%2d %2d %2d %2d %2d \n", arry[(5*i)], arry[(5*i)+1] , arry[5*i+2] , arry[5*i+3] , arry[5*i+4]);
+        
+    }
+}
