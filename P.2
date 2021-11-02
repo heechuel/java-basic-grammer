@@ -42,8 +42,12 @@ public class Main{
                 
                 for(i =0;i<Bingo.length;i++){
                     for(j = 0; j<Bingo[i].length;j++){
-                        if(select == Bingo[i][j])
-                        Choose[i][j] = " O ";
+                        if(select == Bingo[i][j]){
+                            if(Choose[i][j] == null)
+                                Choose[i][j] = " O ";
+                            else
+                                select = ran.nextInt(25)+1;
+                        }
                     }
                 }
                 
@@ -57,8 +61,14 @@ public class Main{
                 
                 for(i =0;i<Bingo.length;i++){
                     for(j = 0; j<Bingo[i].length;j++){
-                        if(select == Bingo[i][j])
-                        Choose[i][j] = " X ";
+                        if(select == Bingo[i][j]){
+                            if(Choose[i][j] == null)
+                                Choose[i][j] = " X ";
+                            else{
+                                System.out.print("숫자를 다시 선택하세요 (User) : ");
+                                select = scan.nextInt();
+                            }
+                        }
                     }
                 }
                 break;
@@ -69,4 +79,5 @@ public class Main{
     }
   }
 }
+
 
