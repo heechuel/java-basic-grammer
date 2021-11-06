@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Main{
   public static void main(String[] args){
+    
     int[][] Bingo = new int[5][5];
     String[][] Choose = new String[5][5];
+    
     Random ran = new Random();
     Scanner scan = new Scanner(System.in);
 
@@ -24,6 +26,14 @@ public class Main{
         Bingo[i][j] = ran.nextInt(25)+1;
       }
     }
+    
+    // 2차원 배열의 중복 제거
+    for()
+    
+    
+    
+    
+    
     
     // 여기서 부터 출력문
     Outter: while(true){
@@ -77,6 +87,11 @@ public class Main{
                                 j--;
                             }
                         }
+                        else if(select<1 || select>25){
+                            System.out.print("숫자를 다시 선택하세요 (User) : ");
+                            select = scan.nextInt();
+                            j--;
+                        }
                     }
                 }
                 break;
@@ -87,24 +102,83 @@ public class Main{
         
         // 승리여부 1: 가로방향 
         for(i = 0; i<Choose.length; i++){
-            for(j=1; j<Choose[i].length; j++){
+            for(j=0; j<Choose[i].length; j++){
                 if(u_Word == Choose[i][j])
                 u_Win++;
                 else if(c_Word == Choose[i][j])
                 c_Win++;
             }
             if(u_Win == 5){
-                System.out.println("유저 승리");
+                System.out.println("User 빙고!!!");
+                break Outter;
+            }
+            else if(c_Win == 5){
+                System.out.println("Computer 빙고!!!");
                 break Outter;
             }
             u_Win = 0;
             c_Win = 0;
         }
-    
+        
+        // 승리여부 2: 세로방향
+        for(i = 0; i<Choose.length; i++){
+            for(j=0;j<Choose[i].length; j++){
+                if(u_Word == Choose[j][i])
+                    u_Win++;
+                else if(c_Word == Choose[j][i])
+                    c_Win++;
+            }
+            if(u_Win == 5){
+                System.out.println("User 빙고!!!");
+                break Outter;
+            }
+            else if(c_Win == 5){
+                System.out.println("Computer 빙고!!!");
+                break Outter;
+            }
+            u_Win = 0;
+            c_Win = 0;
+        }
+        
+        // 승리여부 3: 주대각선
+        for(i=0;i<Choose.length; i++){
+            if(u_Word == Choose[i][i])
+                    u_Win++;
+                else if(c_Word == Choose[i][i])
+                    c_Win++;
+
+            if(u_Win == 5){
+                System.out.println("User 빙고!!!");
+                break Outter;
+            }
+            else if(c_Win == 5){
+                System.out.println("Computer 빙고!!!");
+                break Outter;
+            }
+            u_Win = 0;
+            c_Win = 0;
+        }
+        
+        //승리여부 4: 반대각선
+        for(i=Choose.length - 1;i >= 0; i--){
+            if(u_Word == Choose[i][i])
+                    u_Win++;
+                else if(c_Word == Choose[i][i])
+                    c_Win++;
+
+            if(u_Win == 5){
+                System.out.println("User 빙고!!!");
+                break Outter;
+            }
+            else if(c_Win == 5){
+                System.out.println("Computer 빙고!!!");
+                break Outter;
+            }
+            u_Win = 0;
+            c_Win = 0;
+        }
+        
+        
     }
   }
 }
-
-
-
-
