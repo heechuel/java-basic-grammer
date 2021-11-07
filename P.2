@@ -28,16 +28,13 @@ public class Main{
     }
     
     // 2차원 배열의 중복 제거
-    for()
-    
-    
-    
-    
+    //for()
     
     
     // 여기서 부터 출력문
     Outter: while(true){
         count++;
+        
         System.out.println("==============");
         for(i =0;i<Bingo.length;i++){
             for(j = 0; j<Bingo[i].length;j++){
@@ -49,55 +46,8 @@ public class Main{
             System.out.println("");
         }
         System.out.println("==============");
-        
-        switch(count%2){
-        
-            case 0:{
-                select = ran.nextInt(25)+1;
-                
-                for(i =0;i<Bingo.length;i++){
-                    for(j = 0; j<Bingo[i].length;j++){
-                        if(select == Bingo[i][j]){
-                            if(Choose[i][j] == null)
-                                Choose[i][j] = " O ";
-                            else{
-                                select = ran.nextInt(25)+1;
-                                j--;
-                            }
-                        }
-                    }
-                }
-                
-                System.out.println("Computer는 "+ select+"을 선택했습니다.");
-                break;
-            }
-        
-            case 1:{
-                System.out.print("숫자를 선택하세요 (User) : ");
-                select = scan.nextInt();
-                
-                for(i =0;i<Bingo.length;i++){
-                    for(j = 0; j<Bingo[i].length;j++){
-                        if(select == Bingo[i][j]){
-                            if(Choose[i][j] == null)
-                                Choose[i][j] = " X ";
-                            else{
-                                System.out.print("숫자를 다시 선택하세요 (User) : ");
-                                select = scan.nextInt();
-                                j--;
-                            }
-                        }
-                        else if(select<1 || select>25){
-                            System.out.print("숫자를 다시 선택하세요 (User) : ");
-                            select = scan.nextInt();
-                            j--;
-                        }
-                    }
-                }
-                break;
-            }
-        
-        }
+       
+       
         // 승리 여부 조건문
         
         // 승리여부 1: 가로방향 
@@ -177,8 +127,56 @@ public class Main{
             u_Win = 0;
             c_Win = 0;
         }
+       
         
+        switch(count%2){
         
+            case 0:{
+                select = ran.nextInt(25)+1;
+                
+                for(i =0;i<Bingo.length;i++){
+                    for(j = 0; j<Bingo[i].length;j++){
+                        if(select == Bingo[i][j]){
+                            if(Choose[i][j] == null)
+                                Choose[i][j] = " O ";
+                            else{
+                                select = ran.nextInt(25)+1;
+                                j--;
+                            }
+                        }
+                    }
+                }
+                
+                System.out.println("Computer는 "+ select+"을 선택했습니다.");
+                break;
+            }
+        
+            case 1:{
+                System.out.print("숫자를 선택하세요 (User) : ");
+                select = scan.nextInt();
+                
+                for(i =0;i<Bingo.length;i++){
+                    for(j = 0; j<Bingo[i].length;j++){
+                        if(select == Bingo[i][j]){
+                            if(Choose[i][j] == null)
+                                Choose[i][j] = " X ";
+                            else{
+                                System.out.print("숫자를 다시 선택하세요 (User) : ");
+                                select = scan.nextInt();
+                                j--;
+                            }
+                        }
+                        else if(select<1 || select>25){
+                            System.out.print("숫자를 다시 선택하세요 (User) : ");
+                            select = scan.nextInt();
+                            j--;
+                        }
+                    }
+                }
+                break;
+            }
+            
+        }
     }
   }
 }
