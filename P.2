@@ -1,34 +1,10 @@
-package Java_PJ;                                // With 서창훈
+package Java_PJ;                                
 
 import java.util.Random;
 import java.util.Scanner;
 
-class Find{
-    int c = 0;
-    
-    public boolean Finder(int[][] Bingo ,int x,int y){
-        int c = 0;                          // c> 5*x+y 까지 반복 시 현재 위치 -1
-        
-        while(true){
-            for(int i = 0; i<x+1;i++){
-                for(int j = 0; j < Bingo.length; j++){
-                    c++;
-                    if(Bingo[x][y] == Bingo[i][j])
-                        return true;
-                    else if(c>5*x+y)
-                        return false;
-                }
-            }
-        }
-    }
-    
-}
 
-public class Second {
-
-    int[][] Bingo;
-    String[][] Choose;
-    
+public class Second {    
   public static void main(String[] args){
     
     int[][] Bingo = new int[5][5];
@@ -37,7 +13,6 @@ public class Second {
     
     Random ran = new Random();
     Scanner scan = new Scanner(System.in);
-    Find finding = new Find();
 
     int i, j, select;
     int x = 0, y = 0;
@@ -153,11 +128,15 @@ public class Second {
         }
         
         // 승리여부 3: 주대각선
-        for(i=0;i<Choose.length; i++){
-            if(u_Word == Choose[i][i])
+        for(j=0;j<Choose.length;j++){
+            for(i=0;i<Choose.length; i++){
+                if(u_Word == Choose[i][i]){
                     u_Win++;
-                else if(c_Word == Choose[i][i])
+                }
+                else if(c_Word == Choose[i][i]){
                     c_Win++;
+                }
+            }
 
             if(u_Win == 5){
                 System.out.println("User 빙고!!!");
@@ -172,22 +151,24 @@ public class Second {
         }
         
         //승리여부 4: 반대각선
-        for(i=Choose.length - 1;i >= 0; i--){
-            if(u_Word == Choose[i][i])
+        for(j = 0; j<Choose.length;j++){
+            for(i = 0; i<Choose.length;i++){
+                if(u_Word == Choose[i][Choose.length-i-1])
                     u_Win++;
-                else if(c_Word == Choose[i][i])
+                else if(c_Word == Choose[i][Choose.length-i-1])
                     c_Win++;
+            }
 
-            if(u_Win == 5){
-                System.out.println("User 빙고!!!");
-                break Outter;
-            }
-            else if(c_Win == 5){
-                System.out.println("Computer 빙고!!!");
-                break Outter;
-            }
-            u_Win = 0;
-            c_Win = 0;
+                if(u_Win == 5){
+                    System.out.println("User 빙고!!!");
+                    break Outter;
+                }
+                else if(c_Win == 5){
+                    System.out.println("Computer 빙고!!!");
+                    break Outter;
+                }
+                u_Win = 0;
+                c_Win = 0;
         }
        
         
