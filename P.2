@@ -1,70 +1,85 @@
+package Java_PJ;                                // With 서창훈
+
 import java.util.Random;
 import java.util.Scanner;
 
+class Find{
+    int c = 0;
+    
+    public boolean Finder(int[][] Bingo ,int x,int y){
+        int c = 0;                          // c> 5*x+y 까지 반복 시 현재 위치 -1
+        
+        while(true){
+            for(int i = 0; i<x+1;i++){
+                for(int j = 0; j < Bingo.length; j++){
+                    c++;
+                    if(Bingo[x][y] == Bingo[i][j])
+                        return true;
+                    else if(c>5*x+y)
+                        return false;
+                }
+            }
+        }
+    }
+    
+}
 
-public class Main{
+public class Second {
+
+    int[][] Bingo;
+    String[][] Choose;
+    
   public static void main(String[] args){
     
     int[][] Bingo = new int[5][5];
+    int[][] Board = new int[5][5];
     String[][] Choose = new String[5][5];
     
     Random ran = new Random();
     Scanner scan = new Scanner(System.in);
+    Find finding = new Find();
 
     int i, j, select;
-    int temp;
     int x = 0, y = 0;
-    int re = 0;
     int count = 0;
     int u_Win = 0;
     int c_Win = 0;
     
     String u_Word = " X ";
     String c_Word = " O ";
+    
 
 
-    // 빙고판 생성
+    // 빙고판 대입값 생성
     for(i =0;i<Bingo.length;i++){
-      for(j = 0; j<Bingo[i].length;j++){
-        Bingo[i][j] = ran.nextInt(25)+1;
-      }
+        for(j = 0; j<Bingo[i].length;j++){
+            Board[i][j] = (5*i) + j + 1;
+         }
     }
- 
-    
-    // 빙고판 초기 출력
-    System.out.println("==============");
-        for(i =0;i<Bingo.length;i++){
-            for(j = 0; j<Bingo[i].length;j++){
-                if(Choose[i][j] == null)
-                System.out.printf("%2d ",Bingo[i][j]);
-                else if(Choose[i][j] != null)
-                System.out.printf("%s", Choose[i][j]);
-            }
-            System.out.println("");
-        }
-        System.out.println("==============");
-    
-    
-    
+      
+
     
     
     // 2차원 배열의 중복 제거
-    while(true){
-        y++;
-        
-        for(i=0;i<x+1;i++){
-            for(j=0;j<y;j++){
-                if(Bingo[x][y] == Bingo[i][j]){
-                    System.out.print((x+1)+" 줄 " + (y+1)+" 번째 == ");
-                    Bingo[x][y] = ran.nextInt(25)+1;
-                    System.out.println((i+1)+" 줄 "+ (j+1)+ " 번째  >>> " +Bingo[x][y]);
-                    j = -1;
-                    i = 0;
+    for(i = 0; i < Board.length;i++){
+        for(j = 0; j<Board[i].length;j++){
+            int temp1 = ran.nextInt(5);
+            int temp2 = ran.nextInt(5);
+            while(true){
+                if(Board[temp1][temp2] == 0){
+                    temp1 = ran.nextInt(5);
+                    temp2 = ran.nextInt(5);
+                }
+                else if(Board[temp1][temp2] != 0){
+                    Bingo[i][j] = Board[temp1][temp2];
+                    Board[temp1][temp2] = 0;
+                    break;
                 }
             }
         }
-        
-         System.out.println("=======빙고 확인=======");
+    }
+      
+      System.out.println("==============");
         for(i =0;i<Bingo.length;i++){
             for(j = 0; j<Bingo[i].length;j++){
                 if(Choose[i][j] == null)
@@ -75,26 +90,11 @@ public class Main{
             System.out.println("");
         }
         System.out.println("==============");
-        
-        if(x == 4)
-        break;
-        
-        if(y== 4){
-        x++;
-        y=-1;
-        }
-
-    }
     
-    
-    
-    
-    
-    
-    
-    
+   
     // 여기서 부터 출력문
-    Outter: while(true){
+    Outter: 
+      while(true){
         count++;
         
         System.out.println("==============");
@@ -242,16 +242,3 @@ public class Main{
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
